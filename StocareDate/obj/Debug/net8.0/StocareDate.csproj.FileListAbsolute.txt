@@ -1,0 +1,15 @@
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\bin\Debug\net8.0\StocareDate.deps.json
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\bin\Debug\net8.0\StocareDate.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\bin\Debug\net8.0\StocareDate.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\bin\Debug\net8.0\LibrarieModele.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\bin\Debug\net8.0\LibrarieModele.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\StocareDate.csproj.AssemblyReference.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\StocareDate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\StocareDate.AssemblyInfoInputs.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\StocareDate.AssemblyInfo.cs
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\StocareDate.csproj.CoreCompileInputs.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\StocareD.DBD3CCEE.Up2Date
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\StocareDate.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\refint\StocareDate.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\StocareDate.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\StocareDate\obj\Debug\net8.0\ref\StocareDate.dll

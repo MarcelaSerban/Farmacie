@@ -1,0 +1,11 @@
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\bin\Debug\net8.0\LibrarieModele.deps.json
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\bin\Debug\net8.0\LibrarieModele.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\bin\Debug\net8.0\LibrarieModele.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\obj\Debug\net8.0\LibrarieModele.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\obj\Debug\net8.0\LibrarieModele.AssemblyInfoInputs.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\obj\Debug\net8.0\LibrarieModele.AssemblyInfo.cs
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\obj\Debug\net8.0\LibrarieModele.csproj.CoreCompileInputs.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\obj\Debug\net8.0\LibrarieModele.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\obj\Debug\net8.0\refint\LibrarieModele.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\obj\Debug\net8.0\LibrarieModele.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\LibrarieModele\obj\Debug\net8.0\ref\LibrarieModele.dll
