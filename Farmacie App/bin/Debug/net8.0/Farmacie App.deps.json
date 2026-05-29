@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Farmacie App/1.0.0": {
+        "dependencies": {
+          "LibrarieModele": "1.0.0",
+          "StocareDate": "1.0.0"
+        },
+        "runtime": {
+          "Farmacie App.dll": {}
+        }
+      },
+      "LibrarieModele/1.0.0": {
+        "runtime": {
+          "LibrarieModele.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "StocareDate/1.0.0": {
+        "dependencies": {
+          "LibrarieModele": "1.0.0"
+        },
+        "runtime": {
+          "StocareDate.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Farmacie App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LibrarieModele/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StocareDate/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,371 @@
+<Window x:Class="NivelUIWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NivelUIWPF"
+        xmlns:modele="clr-namespace:LibrarieModele;assembly=LibrarieModele"
+        mc:Ignorable="d"
+        Title="Gestiune Farmacie" Height="780" Width="1100"
+        MinHeight="600" MinWidth="900">
+
+    <Window.Resources>
+        <local:EnumToBooleanConverter x:Key="enumToBool"/>
+
+        <Style x:Key="BtnMeniu" TargetType="Button">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Background" Value="#2E75B6"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style x:Key="LblSectiune" TargetType="Label">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#888"/>
+            <Setter Property="Padding" Value="2,12,0,4"/>
+        </Style>
+        <Style x:Key="BtnActiune" TargetType="Button">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Width" Value="110"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Background" Value="#2E75B6"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,14,0">
+            <Label Content="MEDICAMENTE" Style="{StaticResource LblSectiune}"/>
+            <Button x:Name="btnMeniuMedAdauga" Content="_Adauga medicament"
+                    Style="{StaticResource BtnMeniu}" Click="btnMeniuMedAdauga_Click"/>
+            <Button x:Name="btnMeniuMedCauta" Content="_Cauta medicament"
+                    Style="{StaticResource BtnMeniu}" Click="btnMeniuMedCauta_Click"/>
+            <Separator Margin="0,4,0,4"/>
+            <Label Content="ANGAJATI" Style="{StaticResource LblSectiune}"/>
+            <Button x:Name="btnMeniuAngAdauga" Content="A_dauga angajat"
+                    Style="{StaticResource BtnMeniu}" Click="btnMeniuAngAdauga_Click"/>
+            <Button x:Name="btnMeniuAngCauta" Content="C_auta angajat"
+                    Style="{StaticResource BtnMeniu}" Click="btnMeniuAngCauta_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+
+            <Grid x:Name="panelMedAdauga" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+            
+                <Grid Grid.Row="1" Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Label Content="_Nume" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                        <TextBox x:Name="txtMedNume" Height="30" FontSize="14"
+                                 Padding="8,0" VerticalContentAlignment="Center" MaxLength="50"
+                                 Text="{Binding MedicamentCurent.Nume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock x:Name="tbErrMedNume" Text="" FontSize="11" Foreground="Red"
+                                   Margin="0,3,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <Label Content="_Producator" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                        <TextBox x:Name="txtMedProd" Height="30" FontSize="14"
+                                 Padding="8,0" VerticalContentAlignment="Center" MaxLength="50"
+                                 Text="{Binding MedicamentCurent.Producator, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock x:Name="tbErrMedProd" Text="" FontSize="11" Foreground="Red"
+                                   Margin="0,3,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="2" Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Label Content="P_ret (lei)" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                        <TextBox x:Name="txtMedPret" Height="30" FontSize="14"
+                                 Padding="8,0" VerticalContentAlignment="Center"
+                                 Text="{Binding MedicamentCurent.Pret, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock x:Name="tbErrMedPret" Text="" FontSize="11" Foreground="Red"
+                                   Margin="0,3,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <Label Content="_Stoc (buc)" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                        <TextBox x:Name="txtMedStoc" Height="30" FontSize="14"
+                                 Padding="8,0" VerticalContentAlignment="Center"
+                                 Text="{Binding MedicamentCurent.Stoc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock x:Name="tbErrMedStoc" Text="" FontSize="11" Foreground="Red"
+                                   Margin="0,3,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Row="3" Margin="0,0,0,8">
+                    <Label Content="Tip Medicament" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <RadioButton x:Name="rbAntibiotic" Content="Antibiotic" GroupName="TipMed" Margin="0,0,18,4"
+                                     IsChecked="{Binding MedicamentCurent.Tip, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:TipMedicament.Antibiotic}}"/>
+                        <RadioButton x:Name="rbAnalgezic" Content="Analgezic" GroupName="TipMed" Margin="0,0,18,4"
+                                     IsChecked="{Binding MedicamentCurent.Tip, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:TipMedicament.Analgezic}}"/>
+                        <RadioButton x:Name="rbAntiviral" Content="Antiviral" GroupName="TipMed" Margin="0,0,18,4"
+                                     IsChecked="{Binding MedicamentCurent.Tip, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:TipMedicament.Antiviral}}"/>
+                        <RadioButton x:Name="rbAntifungic" Content="Antifungic" GroupName="TipMed" Margin="0,0,18,4"
+                                     IsChecked="{Binding MedicamentCurent.Tip, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:TipMedicament.Antifungic}}"/>
+                        <RadioButton x:Name="rbVitamine" Content="Vitamine" GroupName="TipMed" Margin="0,0,18,4"
+                                     IsChecked="{Binding MedicamentCurent.Tip, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:TipMedicament.Vitamine}}"/>
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Margin="0,0,0,8">
+                    <Label Content="Facilitati" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <CheckBox x:Name="cbNecesitaReteta" Content="Necesita reteta" Margin="0,0,18,4"
+                                  Checked="Facilitati_Changed" Unchecked="Facilitati_Changed"/>
+                        <CheckBox x:Name="cbRefrigerare" Content="Refrigerare" Margin="0,0,18,4"
+                                  Checked="Facilitati_Changed" Unchecked="Facilitati_Changed"/>
+                        <CheckBox x:Name="cbDoarAdulti" Content="Doar adulti" Margin="0,0,18,4"
+                                  Checked="Facilitati_Changed" Unchecked="Facilitati_Changed"/>
+                        <CheckBox x:Name="cbCompensat" Content="Compensat" Margin="0,0,18,4"
+                                  Checked="Facilitati_Changed" Unchecked="Facilitati_Changed"/>
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0,6,0,10">
+                    <Button x:Name="btnMedSalveaza" Content="_Salveaza"
+                            Style="{StaticResource BtnActiune}" Click="btnMedSalveaza_Click"/>
+                    <Button x:Name="btnMedActualizeaza" Content="Act_ualizeaza"
+                            Style="{StaticResource BtnActiune}" IsEnabled="False"
+                            Click="btnMedActualizeaza_Click"/>
+                    <Button x:Name="btnMedSterge" Content="St_erge"
+                            Style="{StaticResource BtnActiune}" IsEnabled="False"
+                            Click="btnMedSterge_Click"/>
+                    <Button x:Name="btnMedReseteaza" Content="_Reset" Height="32" Width="80"
+                            Click="btnMedReseteaza_Click"/>
+                    <TextBlock x:Name="tbWarnMed"
+                               Text="Modifica campurile si apasa Actualizeaza pentru a salva modificarile."
+                               Foreground="DarkOrange" FontStyle="Italic" FontSize="11"
+                               VerticalAlignment="Center" Margin="12,0,0,0"
+                               TextWrapping="Wrap" MaxWidth="260" Visibility="Collapsed"/>
+                </StackPanel>
+
+                <Label x:Name="lblNrMedicamente" Grid.Row="6" FontWeight="Bold" Margin="0,0,0,4"
+                       Content="{Binding ElementName=dgMedicamente, Path=Items.Count,
+                        StringFormat='Numar medicamente: {0}'}"/>
+
+                <DataGrid x:Name="dgMedicamente" Grid.Row="7"   
+                          AutoGenerateColumns="False" IsReadOnly="True"
+                          CanUserAddRows="False" CanUserDeleteRows="False"
+                          HeadersVisibility="Column" GridLinesVisibility="All"
+                          AlternatingRowBackground="#F5F5F5" RowHeight="26"
+                          MaxHeight="260"
+                          SelectionChanged="dgMedicamente_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"         Binding="{Binding Id}"         Width="40"/>
+                        <DataGridTextColumn Header="Nume"       Binding="{Binding Nume}"       Width="140"/>
+                        <DataGridTextColumn Header="Producator" Binding="{Binding Producator}" Width="130"/>
+                        <DataGridTextColumn Header="Pret (lei)" Binding="{Binding Pret}"       Width="80"/>
+                        <DataGridTextColumn Header="Stoc"       Binding="{Binding Stoc}"       Width="55"/>
+                        <DataGridTextColumn Header="Tip"        Binding="{Binding Tip}"        Width="90"/>
+                        <DataGridTextColumn Header="Facilitati" Binding="{Binding Facilitati}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <Grid x:Name="panelMedCauta" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Margin="0,0,0,8">
+                    <Label Content="Nume medicament" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                    <TextBox x:Name="txtCautareMed" Height="30" FontSize="14"
+                             Padding="8,0" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <Button x:Name="btnCautaMed" Grid.Row="1" Content="Cauta"
+                        HorizontalAlignment="Left" Width="160" Height="32"
+                        Margin="0,0,0,10" Click="btnCautaMed_Click"/>
+                <Label x:Name="lblNrMedGasiti" Grid.Row="2" FontWeight="Bold" Margin="0,0,0,4"/>
+                <DataGrid x:Name="dgMedGasiti" Grid.Row="3"
+                          AutoGenerateColumns="False" IsReadOnly="True"
+                          CanUserAddRows="False" CanUserDeleteRows="False"
+                          HeadersVisibility="Column" GridLinesVisibility="All"
+                          AlternatingRowBackground="#F5F5F5" RowHeight="26">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"         Binding="{Binding Id}"         Width="40"/>
+                        <DataGridTextColumn Header="Nume"       Binding="{Binding Nume}"       Width="140"/>
+                        <DataGridTextColumn Header="Producator" Binding="{Binding Producator}" Width="130"/>
+                        <DataGridTextColumn Header="Pret (lei)" Binding="{Binding Pret}"       Width="80"/>
+                        <DataGridTextColumn Header="Stoc"       Binding="{Binding Stoc}"       Width="55"/>
+                        <DataGridTextColumn Header="Tip"        Binding="{Binding Tip}"        Width="90"/>
+                        <DataGridTextColumn Header="Facilitati" Binding="{Binding Facilitati}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+
+            <Grid x:Name="panelAngAdauga" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <Grid Grid.Row="1" Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Label Content="_Nume Angajat" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                        <TextBox x:Name="txtAngNume" Height="30" FontSize="14"
+                                 Padding="8,0" VerticalContentAlignment="Center" MaxLength="50"
+                                 Text="{Binding AngajatCurent.Nume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock x:Name="tbErrAngNume" Text="" FontSize="11" Foreground="Red"
+                                   Margin="0,3,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <Label Content="_Salariu (lei)" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                        <TextBox x:Name="txtAngSalariu" Height="30" FontSize="14"
+                                 Padding="8,0" VerticalContentAlignment="Center"
+                                 Text="{Binding AngajatCurent.Salariu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock x:Name="tbErrAngSalariu" Text="" FontSize="11" Foreground="Red"
+                                   Margin="0,3,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Row="2" Margin="0,0,0,8">
+                    <Label Content="Functie" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <RadioButton x:Name="rbFarmacist" Content="Farmacist" GroupName="Functie" Margin="0,0,18,4"
+                                     IsChecked="{Binding AngajatCurent.Functie, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:FunctieAngajat.Farmacist}}"/>
+                        <RadioButton x:Name="rbAsistent" Content="Asistent" GroupName="Functie" Margin="0,0,18,4"
+                                     IsChecked="{Binding AngajatCurent.Functie, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:FunctieAngajat.Asistent}}"/>
+                        <RadioButton x:Name="rbManager" Content="Manager" GroupName="Functie" Margin="0,0,18,4"
+                                     IsChecked="{Binding AngajatCurent.Functie, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:FunctieAngajat.Manager}}"/>
+                        <RadioButton x:Name="rbCasier" Content="Casier" GroupName="Functie" Margin="0,0,18,4"
+                                     IsChecked="{Binding AngajatCurent.Functie, Mode=TwoWay,
+                                         Converter={StaticResource enumToBool},
+                                         ConverterParameter={x:Static modele:FunctieAngajat.Casier}}"/>
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,6,0,10">
+                    <Button x:Name="btnAngSalveaza" Content="_Salveaza"
+                            Style="{StaticResource BtnActiune}" Click="btnAngSalveaza_Click"/>
+                    <Button x:Name="btnAngActualizeaza" Content="Act_ualizeaza"
+                            Style="{StaticResource BtnActiune}" IsEnabled="False"
+                            Click="btnAngActualizeaza_Click"/>
+                    <Button x:Name="btnAngSterge" Content="St_erge"
+                            Style="{StaticResource BtnActiune}" IsEnabled="False"
+                            Click="btnAngSterge_Click"/>
+                    <Button x:Name="btnAngReseteaza" Content="_Reset" Height="32" Width="80"
+                            Click="btnAngReseteaza_Click"/>
+                    <TextBlock x:Name="tbWarnAng"
+                               Text="Modifica campurile si apasa Actualizeaza pentru a salva modificarile."
+                               Foreground="DarkOrange" FontStyle="Italic" FontSize="11"
+                               VerticalAlignment="Center" Margin="12,0,0,0"
+                               TextWrapping="Wrap" MaxWidth="260" Visibility="Collapsed"/>
+                </StackPanel>
+
+                <Label x:Name="lblNrAngajati" Grid.Row="4" FontWeight="Bold" Margin="0,0,0,4"
+                              Content="{Binding ElementName=dgAngajati, Path=Items.Count,
+                              StringFormat='Numar angajati: {0}'}"/>
+
+                <DataGrid x:Name="dgAngajati" Grid.Row="5"
+                          AutoGenerateColumns="False" IsReadOnly="True"
+                          CanUserAddRows="False" CanUserDeleteRows="False"
+                          HeadersVisibility="Column" GridLinesVisibility="All"
+                          AlternatingRowBackground="#F5F5F5" RowHeight="26"
+                          MaxHeight="400"
+                          SelectionChanged="dgAngajati_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"      Binding="{Binding Id}"      Width="50"/>
+                        <DataGridTextColumn Header="Nume"    Binding="{Binding Nume}"    Width="*"/>
+                        <DataGridTextColumn Header="Functie" Binding="{Binding Functie}" Width="120"/>
+                        <DataGridTextColumn Header="Salariu" Binding="{Binding Salariu}" Width="110"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+
+            <Grid x:Name="panelAngCauta" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Margin="0,0,0,8">
+                    <Label Content="Nume angajat" FontWeight="Bold" Padding="0" Margin="0,0,0,4"/>
+                    <TextBox x:Name="txtCautareAng" Height="30" FontSize="14"
+                             Padding="8,0" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <Button x:Name="btnCautaAng" Grid.Row="1" Content="Cauta"
+                        HorizontalAlignment="Left" Width="160" Height="32"
+                        Margin="0,0,0,10" Click="btnCautaAng_Click"/>
+                <Label x:Name="lblNrAngGasiti" Grid.Row="2" FontWeight="Bold" Margin="0,0,0,4"/>
+                <DataGrid x:Name="dgAngGasiti" Grid.Row="3"
+                          AutoGenerateColumns="False" IsReadOnly="True"
+                          CanUserAddRows="False" CanUserDeleteRows="False"
+                          HeadersVisibility="Column" GridLinesVisibility="All"
+                          AlternatingRowBackground="#F5F5F5" RowHeight="26">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"      Binding="{Binding Id}"      Width="50"/>
+                        <DataGridTextColumn Header="Nume"    Binding="{Binding Nume}"    Width="*"/>
+                        <DataGridTextColumn Header="Functie" Binding="{Binding Functie}" Width="120"/>
+                        <DataGridTextColumn Header="Salariu" Binding="{Binding Salariu}" Width="110"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

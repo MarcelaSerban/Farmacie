@@ -1,0 +1,20 @@
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\Farmacie App.exe
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\Farmacie App.deps.json
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\Farmacie App.runtimeconfig.json
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\Farmacie App.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\Farmacie App.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\LibrarieModele.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\StocareDate.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\LibrarieModele.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\bin\Debug\net8.0\StocareDate.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie App.csproj.AssemblyReference.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie App.AssemblyInfoInputs.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie App.AssemblyInfo.cs
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie App.csproj.CoreCompileInputs.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie.626EDE01.Up2Date
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie App.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\refint\Farmacie App.dll
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie App.pdb
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\Farmacie App.genruntimeconfig.cache
+C:\Users\Marcela\Desktop\Semestru II\PIU\Farmacie App\obj\Debug\net8.0\ref\Farmacie App.dll
